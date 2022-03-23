@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Jim2Pack.main.Mappers.UserMapper">
+    <insert id = "SignUp" parameterType = "User">
+    	INSERT INTO USER(ID, Password, Name) 
+    	VALUES(#{ID},HEX(AES_ENCRYPT(#{Password},'J2P')),#{Name})
+    </insert>
+    <select id = "GetUser" parameterType = "String" resultType = "User">
+    	Select * from User Where ID = #{ID}
+    </select>
+    <select id = "SignIn" parameterType = "String" resultType = "User">
+    	Select * from User Where ID = #{ID} AND Password = HEX(AES_ENCRYPT(#{Password},'J2P'))
+    </select>
+</mapper>
+
