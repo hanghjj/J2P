@@ -7,48 +7,48 @@
 <head>
 <meta charset="UTF-8">
 <title>AddJim</title>
-<link rel="stylesheet" href="/resources/css/Loginmain.css">
-<link rel="stylesheet" href="/resources/css/Loginutil.css">
-<script src="/resources/js/Loginmain.js"></script>
 </head>
 <body>
 <%
  String UserID = (String)session.getAttribute("loggedID");
+if(UserID.equals("null")){
+	out.println("<script>");
+	out.println("alert('로그인 후 이용 가능합니다.')");
+	out.println("location.href = '/'");
+	out.println("</script>");
+}
 %>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method = "post">
-					<span class="login100-form-title p-b-26">
-						Jim Registration
-					</span>
-				
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="hidden" name="ID" value = <%=UserID%>>
-					</div>
-					
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="name">
-						<span class="focus-input100" data-placeholder="Jim Name"></span>
-					</div>
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="item">
-						<span class="focus-input100" data-placeholder="Item"></span>
-
-					</div>
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Register
-							</button>
-						</div>
-					</div>
-
-				</form>
-			</div>
+ <script>
+        const add_textbox = () => {
+            const box = document.getElementById("box");
+            const newP = document.createElement('p');
+            newP.innerHTML = "<div class='input-group mb-3'><input type='text' class='form-control' style='width:300px;'name = 'items' placeholder='item'><div class='input-group-append'><input type='button' class='btn btn-outline-secondary' value='삭제' onclick='remove(this)'></div></div>";
+            box.appendChild(newP);
+        }
+        const remove = (obj) => {
+            document.getElementById('box').removeChild(obj.parentNode.parentNode.parentNode);
+        }
+ </script>
+<div class = "container-lg" >
+<br>
+<br>
+<br>
+	<form method = "post" id = 'box' >
+		<label for="basic-url" class="form-label">Jim Registration</label>
+		<div class="col-xs-3">
+		<input type="hidden" class="form-control" value = <%=UserID %> name = "ID">
+  		<input type="text" class="form-control" name = "name" placeholder="name" aria-label="Username" aria-describedby="basic-addon1">
 		</div>
-	</div>
-</body>
+		<br>
+		<div class="input-group mb-3">
+  			<input type="text" class="form-control" name = 'items' style='width:300px;'placeholder='item'>
+  			<div class="input-group-append">
+    		<input type="button" class="btn btn-outline-secondary"value="추가" onclick="add_textbox()">
+  			</div>
+		</div>
+		</form>
+		<input type = 'submit' form = 'box'>
+</div>
+	
 <%@ include file="footer.jsp"%>
 </html>

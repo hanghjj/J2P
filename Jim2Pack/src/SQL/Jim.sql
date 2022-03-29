@@ -7,3 +7,5 @@ Create table Jim(
 );
 
 Drop table Jim;
+select * from Jim;
+delete from Jim where ID = 'test';

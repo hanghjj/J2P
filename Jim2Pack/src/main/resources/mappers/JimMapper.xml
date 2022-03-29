@@ -5,4 +5,10 @@
     	INSERT INTO Jim(ID, name, item) 
     	VALUES(#{ID},#{name}, #{item})
     </insert>
+    <select id = "GetUserJimSet" parameterType = "String" resultType = "Jim">
+    	SELECT * FROM Jim WHERE ID = #{ID} AND name = #{name}
+    </select>
+    <select id="getJimList"  parameterType = "String" resultType = "Jim">
+    	SELECT * FROM Jim WHERE ID = #{ID}
+    </select>
 </mapper>

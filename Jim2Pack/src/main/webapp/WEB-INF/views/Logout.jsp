@@ -8,7 +8,7 @@
 <title>logout</title>
 </head>
 <body>
-<%session.invalidate();
+<% session.setAttribute("loggedID", "null");
 		out.println("<script>");
  		out.println("alert('로그아웃이 완료되었습니다.')");
  		out.println("location.href = '/'");

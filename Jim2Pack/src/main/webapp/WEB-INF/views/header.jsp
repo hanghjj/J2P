@@ -10,8 +10,10 @@
 <title>Jim2Pack</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/css/styles.css">
+	<link rel="stylesheet" href="/resources/css/JimList.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 	
 </head>
 <body class="pt-5">
@@ -20,7 +22,7 @@
 	if(id==null){
 		id = (String)session.getAttribute("loggedID");
 	}
-	if(id!=null){
+	if(!id.equals("null")){
 	session.setAttribute("loggedID", id);
 %>
 	<nav
@@ -35,21 +37,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					</li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownPortfolio" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> Portfolio </a>
+						aria-haspopup="true" aria-expanded="false"> Jim </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="portfolio-1-col.html">1 Column
-								Portfolio</a> <a class="dropdown-item" href="portfolio-2-col.html">2
-								Column Portfolio</a> <a class="dropdown-item"
-								href="portfolio-3-col.html">3 Column Portfolio</a> <a
-								class="dropdown-item" href="portfolio-4-col.html">4 Column
-								Portfolio</a> <a class="dropdown-item" href="portfolio-item.html">Single
-								Portfolio Item</a>
+							<a class="dropdown-item" href="AddJim">Add Jim Set</a>
+							<% 
+							   request.setAttribute("ID", id);
+							%>
+							<a class="dropdown-item" href="JimList">View Jim List</a> 
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
@@ -82,8 +80,8 @@
 		</div>
 	</nav>
 <%
-} else{
-%>
+} else{session.setAttribute("loggedID", "null");
+%>	
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -96,21 +94,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					</li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownPortfolio" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> Portfolio </a>
+						aria-haspopup="true" aria-expanded="false"> Jim </a>
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="portfolio-1-col.html">1 Column
-								Portfolio</a> <a class="dropdown-item" href="portfolio-2-col.html">2
-								Column Portfolio</a> <a class="dropdown-item"
-								href="portfolio-3-col.html">3 Column Portfolio</a> <a
-								class="dropdown-item" href="portfolio-4-col.html">4 Column
-								Portfolio</a> <a class="dropdown-item" href="portfolio-item.html">Single
-								Portfolio Item</a>
+							<a class="dropdown-item" href="AddJim">Add Jim Set</a>
+							<a class="dropdown-item" href="JimList">View Jim List</a> 
 						</div></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"

@@ -11,6 +11,7 @@ import com.Jim2Pack.main.VO.Jim;
 @Mapper
 public interface JimMapper {
 	public void AddJim(Jim jim);
-	public int DeleteJim(String name);
+	public int DeleteJim(String ID,String name);
+	public Jim GetUserJimSet(String ID, String name);
 	public List<Jim> getJimList(String ID);
 }
